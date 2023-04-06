@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: asdf1234
+    url: jdbc:mysql://localhost:3306/hmw?autoReconnect=true
+    username: root
+  jpa:
+    database: sql-server
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        format_sql: true
+    show-sql: true
+jwt:
+  refresh-time: 1209600000 # 2?
+  access-time: 3600000 # 1??
+  prefix: Bearer
+  header: Authorization
+  secret-key: duddjeksdjdkarltkdlxmenqjswoqjwjs
