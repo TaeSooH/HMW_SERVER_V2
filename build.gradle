@@ -9,6 +9,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
 repositories {
+	maven { url 'https://jitpack.io' }
 	mavenCentral()
 }
 
@@ -27,6 +28,7 @@ dependencies {
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'com.github.leehj050211:bsm-oauth-java:1.0.3'
 }
 
 tasks.named('test') {

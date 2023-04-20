@@ -24,3 +24,6 @@ jwt:
   prefix: Bearer
   header: Authorization
   secret-key: duddjeksdjdkarltkdlxmenqjswoqjwjs
+bsm:
+  client_id: b8457b0e
+  secret_key: 390418d6885ed630cb3cafde8a85c27e
