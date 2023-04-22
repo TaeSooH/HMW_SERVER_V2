@@ -2,10 +2,13 @@ package TaeSuH.HMW.domain.user.domain;
 
 import TaeSuH.HMW.domain.user.domain.type.Authority;
 import TaeSuH.HMW.domain.user.domain.type.StuNumber;
+import TaeSuH.HMW.domain.wordSet.domain.WordSet;
 import jakarta.persistence.*;
 import leehj050211.bsmOauth.dto.resource.BsmUserResource;
 import lombok.Builder;
 import lombok.Getter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,7 +27,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Authority authority;
 
-    protected User() {};
+    @OneToMany()
+    private List<WordSet> wordSetList;
 
     @Builder
     public User(Long id, String email, String name, StuNumber stuNumber, Authority authority) {
