@@ -1,6 +1,7 @@
 package TaeSuH.HMW.global.security.jwt.auth;
 
 import TaeSuH.HMW.domain.user.domain.User;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 @RequiredArgsConstructor
+@Getter
 public class AuthDetails implements UserDetails {
 
     private final User user;

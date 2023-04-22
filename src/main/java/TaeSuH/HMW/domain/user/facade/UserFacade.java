@@ -5,8 +5,10 @@ import TaeSuH.HMW.domain.user.domain.Repository.UserRepository;
 import TaeSuH.HMW.domain.user.domain.User;
 import TaeSuH.HMW.domain.user.domain.type.Authority;
 import TaeSuH.HMW.domain.user.domain.type.StuNumber;
+import TaeSuH.HMW.global.security.jwt.auth.AuthDetails;
 import leehj050211.bsmOauth.dto.resource.BsmUserResource;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -56,5 +58,10 @@ public class UserFacade {
         if(!passwordEncoder.matches(originalPassword, encodedPassword)){
             throw new IllegalArgumentException("not same");
         }
+    }
+
+    public User getCurrentUser() {
+        AuthDetails auth = (AuthDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return auth.getUser();
     }
 }
