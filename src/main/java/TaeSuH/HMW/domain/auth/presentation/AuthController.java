@@ -16,15 +16,6 @@ public class AuthController {
     private final UserLogoutService userLogoutService;
     private final UserLoginOrUpdateService userLoginOrUpdateService;
 
-//    @PostMapping("/signup")
-//    public void signup(@RequestBody SignupRequest request) {
-//        userSignupService.execute(request);
-//    }
-//
-//    @PostMapping("/login")
-//    public TokenResponse login(@RequestBody LoginRequest request) {
-//        return userLoginService.execute(request);
-//    }
     @PostMapping("/bsm")
     public TokenResponse oauth(HttpServletRequest request) {
         return userLoginOrUpdateService.execute(request.getHeader("authCode"));
