@@ -1,8 +1,10 @@
 package TaeSuH.HMW.global.security;
 
+import TaeSuH.HMW.global.error.filter.ExceptionFilter;
 import TaeSuH.HMW.global.security.jwt.JwtTokenProvider;
 import TaeSuH.HMW.global.security.jwt.auth.AuthDetailsService;
 import TaeSuH.HMW.global.security.jwt.filter.JwtAuthenticationFilter;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +24,7 @@ public class SecurityConfig {
 
     private final JwtTokenProvider jwtTokenProvider;
     private final AuthDetailsService authDetailsService;
+    private final ObjectMapper mapper;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -40,7 +43,8 @@ public class SecurityConfig {
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .requestMatchers("/api/**").permitAll()
                 .and()
-                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider,authDetailsService), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider,authDetailsService), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new ExceptionFilter(mapper), JwtAuthenticationFilter.class);
         return http.build();
     }
 }
